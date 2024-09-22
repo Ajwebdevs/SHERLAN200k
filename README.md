@@ -26,6 +26,21 @@ git clone https://github.com/yourusername/sherlan200k.git
 cd sherlan200k
 pip install -r requirements.txt
 ```
+### Prerequisites
+
+- **C++ Compiler**: Ensure you have a C++ compiler that supports C++11 or higher.
+- **CMake**: For building the C++ project.
+- **Python 3.6+**: For running Python scripts.
+- **ICU Library**: Required for advanced Unicode support in C++.
+
+#### Installing Dependencies
+
+**On Ubuntu/Debian:**
+```bash
+sudo apt-get update
+sudo apt-get install build-essential cmake libicu-dev python3-pip
+pip3 install sentencepiece datasets
+```
 
 ## Technical highlights
 - **Training the Tokkenizer**:To train the SentencePiece tokenizer on your text files, run:
@@ -68,5 +83,35 @@ If you use Sherlan200k in your research or projects, please cite it as follows:
 ```
 Arjun.S.Nair.@2024. Sherlan200k: A hybrid tokenization framework. Retrieved from https://github.com/Ajwebdevs/sherlan200k
 ```
-## Update Logs
-Updates coming soon....
+## Channel logs and updates for instalation of specif libraries
+For installatio and usage of icu4c for regex from icu make sure to have it installed for mac os use 
+```
+brew install icu4c
+```
+Fetch the path of the include files and inside that you will find all the regex sub files and headers
+```
+ls /usr/local/opt/icu4c/include //fetch the path
+```
+
+For editing the c__cpp_properties.json file to avoid the errors as well
+```
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/homebrew/opt/icu4c/include" ---->> add this accoridng to the path to avoide errors
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "your/path/hear"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}
+```
